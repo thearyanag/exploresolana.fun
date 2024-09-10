@@ -42,6 +42,7 @@ export async function POST(
           next: {
             type: "inline",
             action: {
+              type: "action",
               ...app_data,
             },
           },

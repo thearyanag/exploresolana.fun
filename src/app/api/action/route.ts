@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  ACTIONS_CORS_HEADERS,
-  ActionGetResponse,
-} from "@solana/actions";
+import { ACTIONS_CORS_HEADERS, ActionGetResponse } from "@solana/actions";
 
 export async function GET(req: NextRequest) {
   let response: ActionGetResponse = {
@@ -24,6 +21,18 @@ export async function GET(req: NextRequest) {
         {
           label: "Trade SOL-SEND", // button text
           href: "/api/action/jupiter", // api endpoint
+        },
+        {
+          parameters: [
+            {
+              type: "text",
+              name: "app_name",
+              required: true,
+              label: "Name of the project",
+            },
+          ],
+          href: "/api/action/all?app_name={app_name}",
+          label: "Explore Solana",
         },
       ],
     },
